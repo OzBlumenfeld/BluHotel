@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<ul>
+    <li><a class="Menu.html" href="#home">Home</a></li>
+    <li><a href="#about">About us</a></li>
+    <li><a href="Reservation.html">Reservation</a></li>
+    <li><a href="Reservation.html">Nightlife</a></li>
+    <li><a href="Reservation.html">Tips</a></li>
+    <li><a href="404">Login</a></li>
+    <li><a href="Sign-up.html">Sign-up</a></li>
+</ul>
+
+<meta charset="UTF-8">
+    <title>Blu Hotel-Reservation</title>
+
+</head>
+<body>
+<!--<body  background="https://www.freepptbackgrounds.net/wp-content/uploads/2013/01/Light-Blue-Effect-PPT-Backgrounds.jpg">-->
+<!--<body  background="https://upload.wikimedia.org/wikipedia/commons/8/8d/Coast_of_Tel_Aviv-Yaffo.JPG">-->
+<h1 align="center">Blu Hotel</h1>
+
+<h2 align="center">In the heart of Tel-Aviv</h2>
+<p align="center">Welcome to our online services</p>
+
+<form action="http://localhost:5000" method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="user_name">
+    </div>
+    <div>
+        <label for="ID">ID:</label>
+        <input type="text" id="ID" name="user_ID">
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="user_email">
+    </div>
+    <div>
+        <label for="credit">Credit card:</label>
+        <input type="text" id="credit" name="user_credit">
+    </div>
+    <div>
+        <label for="arrival">Date of arrival:</label>
+        <input type="date" id="arrival" name="user_arrival">
+    </div>
+    <div>
+        <label for="depearture">Date of depearture:</label>
+        <input type="date" id="depearture" name="user_depearture">
+    </div>
+    <div>
+        <label for="Guests">Number of Guests:</label>
+        <input type="number" id ="Guests" name="user_Guests"></input>
+    </div>
+    <div class="button">
+        <button type="submit">Check availability</button>
+    </div>
+</form>
+<style>
+    /*body {background-color: powderblue;}*/
+    /*h1   {color: blue;}*/
+    /*p    {color: red;}*/
+    body, html {
+        height: 10%;
+    }
+    .bg {
+        /* The image used */
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/8d/Coast_of_Tel_Aviv-Yaffo.JPG");
+
+        /* Full height */
+        height: 10%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    form {
+        /* Just to center the form on the page */
+        margin: 0 auto;
+        width: 400px;
+        /* To see the outline of the form */
+        padding: 1em;
+        border: 1px solid #CCC;
+        border-radius: 1em;
+    }
+
+    form div + div {
+        margin-top: 1em;
+    }
+
+    label {
+        /* To make sure that all labels have the same size and are properly aligned */
+        display: inline-block;
+        width: 90px;
+        text-align: right;
+    }
+
+    input, textarea {
+        /* To make sure that all text fields have the same font settings
+           By default, textareas have a monospace font */
+        font: 1em sans-serif;
+
+        /* To give the same size to all text fields */
+        width: 300px;
+        box-sizing: border-box;
+
+        /* To harmonize the look & feel of text field border */
+        border: 1px solid #999;
+    }
+
+    input:focus, textarea:focus {
+        /* To give a little highlight on active elements */
+        border-color: #000;
+    }
+
+    textarea {
+        /* To properly align multiline text fields with their labels */
+        vertical-align: top;
+
+        /* To give enough room to type some text */
+        height: 5em;
+    }
+
+    .button {
+        /* To position the buttons to the same position of the text fields */
+        padding-left: 90px; /* same size as the label elements */
+    }
+
+    button {
+        /* This extra margin represent roughly the same space as the space
+           between the labels and their text fields */
+        margin-left: .5em;
+    }
+    </style>
+</body>
+</html>
