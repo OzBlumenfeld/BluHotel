@@ -7,11 +7,9 @@ public class HotelDatabase {
     private Statement statement = null;
     private final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private final String DB_URL = "jdbc:mysql://localhost/hotel?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-//    private final String DB_URL = "jdbc:mysql://localhost/hotel";
     //  Database credentials
     private final String USER = "root";
     private final String PASS = "oz223322";
-//    String connectionString = "jdbc:mysql://localhost/" + dbName + "?user=" + USER + "&password=" + PASS + "&useUnicode=true&characterEncoding=UTF-8";
 
     public HotelDatabase(){
         try {
@@ -157,6 +155,25 @@ public class HotelDatabase {
 //        hdb.addCustomer();
     }
 
+    public boolean addUserInfo(Vector<String> vect) throws Exception{
+        //Input: int id,String userName,String password,String email
+        this.connectToDB();
+        statement = conn.createStatement();
+
+//       Todo: check if user unique if not return false
+        String query = " insert into users (id, user_name, password, email)"
+                + " values (?, ?, ?, ?)";
+        int personId = Integer.parseInt(vect.get(2));
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(2,vect.get(0)); //userName
+        preparedStatement.setString(3,vect.get(1)); //password
+        preparedStatement.setInt(1,personId); //id
+        preparedStatement.setString(4,vect.get(3)); //email
+        preparedStatement.execute();
+        conn.close();
+        return true;
+    }
+
     public void CreateCustomersTable() throws Exception{
         System.out.println("in create customers");
         connectToDB();
@@ -208,6 +225,40 @@ public class HotelDatabase {
         }
         return i;
     }
+
+    public String login(Vector<String> vector) throws Exception {
+        String username = vector.get(0);
+        String password = vector.get(1);
+        int id = 0;
+
+        connectToDB();
+        statement =  conn.createStatement();
+        String query = "SELECT id FROM users WHERE user_name= '"+username+"' AND password= "+ password;
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next()) {
+            id = rs.getInt("id");
+        }
+        if (id == 0)
+            return "Failed login";
+        statement =  conn.createStatement();
+        query = "SELECT customers.name, customers.room, customers.arrival, customers.depart " +
+                "FROM customers INNER JOIN users ON customers.id= "+ id;
+
+        rs = statement.executeQuery(query);
+        String userInfo = "You didn't reserve any room yet";
+        while (rs.next()) {
+            String name = rs.getString("name");
+            String room = rs.getString("room");
+            String arrival = rs.getString("arrival");
+            String depart = rs.getString("depart");
+            userInfo = "Name: "+ name+ ", Room number: " +room +", arrival date: " +arrival
+                    + ", departure date: " +depart;
+            break;
+        }
+
+        return userInfo;
+    }
 }
+
 
 
