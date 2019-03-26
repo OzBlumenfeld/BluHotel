@@ -2,13 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sign-up</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
 </head>
 <body>
+<ul>
+    <li><a class="Menu.html" href="#home">Home</a></li>
+    <li><a href="#about">About us</a></li>
+    <li><a href="Reservation.html">Reservation</a></li>
+    <li><a href="Login.html">Login</a></li>
+    <li><a href="Sign-up.html">Sign-up</a></li>
+</ul>
 <form action="http://localhost:5000" method="post">
     <div>
         <label for="name">user name:</label>
-        <input type="text" id="name" name="user_name">
+        <input type="text" id="name" name="SignUpName">
     </div>
     <div>
         <label for="Pass">Password:</label>
@@ -16,6 +48,10 @@
     </div>
         <label for="id">ID:</label>
         <input type="text" id="id" name="user_id">
+    </div>
+    </div>
+    <label for="email">email:</label>
+    <input type="text" id="email" name="email">
     </div>
     <div class="button">
         <button type="submit">Sign up</button>
